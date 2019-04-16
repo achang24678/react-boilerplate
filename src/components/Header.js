@@ -9,43 +9,36 @@ export const Header = (props) => (
     <div className="content-container">
       <div className="header__content">
         <Link className="header__title" to="/dashboard">
-          <h1>Boilerplate</h1>
+          <h1>My Blog</h1>
         </Link>
-        <button className="button button--link" onClick={props.startLogout}>Logout</button>
+        <div className="header__list">
+          <Link className="button button--link" to="/create">
+            <h3>Create Post</h3>
+          </Link>
+          <button className="button button--link" onClick={props.startLogout}>Logout</button>
+          <div className="button button--link">
+            {props.uid ?
+              (<p>yes id</p>)
+              :
+              (<p>no id</p>)
+            }
+          </div>
+        </div>
+
       </div>
     </div>
   </header>
 );
 
-//original NavLink code:
-//  <header>
-// <h1>Expensify</h1>
-// <NavLink to="/dashboard" activeClassName="is-active">Dashboard</NavLink>
-// <NavLink to="/create" activeClassName="is-active">Create Expense</NavLink>
-// <button onClick={props.startLogout}>Logout</button>
-// </header>
 
 
 const mapDispatchToProps = (dispatch) => ({   //implicitly return
   startLogout: () => dispatch(startLogout())
 });
 
-
-export default connect(undefined, mapDispatchToProps)(Header);
-// we don't need state so leave undefined at the first spot
-
-
+const mapStateToProps = (state) => ({
+  uid: state.auth.uid
+});
 
 
-// when user reading and writing from expenses, We want to go to users/userID/expenses
-// const db = {
-//   user: {
-//     uidnum: {
-//       expenses: {
-//         asdf: {
-
-//         }
-//       }
-//     }
-//   }
-// };
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
