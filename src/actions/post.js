@@ -30,8 +30,6 @@ export const setPosts = (posts) => ({
     posts
 });
 
-
-
 export const startFetchPost = () => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
@@ -49,11 +47,32 @@ export const startFetchPost = () => {
     }
    
 }
+export const removePost = ({id} = {}) => ({
+    type: 'REMOVE_POST',
+    id
+});
 
+export const startRemovePost = ({id} = {}) => {
+    return(dispatch, getState) => {
+        const uid = getState().auth.uid;
+        database.ref(`postcol/${id}`).remove();
+        return database.ref(`users/${uid}/posts/${id}`).remove().then(() => {
+            dispatch(removePost({ id }));
+        })
+    }
+}
+export const editPost = (id, updates) => ({
+    type: 'EDIT_POST',
+    id,
+    updates
+});
 
-export const startRemovePost = () => {
-    
-}
-export const startEditPost = () => {
-    
-}
+export const startEditPost = (id, updates) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        database.ref(`postcol/${id}`).update(updates);
+        return database.ref(`users/${uid}/posts/${id}`).update(updates).then(() => {
+            dispatch(editPost(id, updates));
+        });
+    };
+};

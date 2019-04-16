@@ -6,8 +6,8 @@ import uuid from 'uuid';
 const CreatePostForm = (props) => {
 
 
-    const [title, setTitle] = useState('');
-    const [body, setBody] = useState('');
+    const [title, setTitle] = useState(props.post ? props.post.title : '');
+    const [body, setBody] = useState(props.post ? props.post.body : '');
     const [createdAt, setCreatedAt] = useState(moment().valueOf());
     const [error, setError] = useState('');
 

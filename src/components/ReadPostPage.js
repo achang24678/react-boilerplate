@@ -16,12 +16,9 @@ export const ReadPostPage = (props) => {
     //         console.log('Error Fetching data', e);
     //     });
     // }, [])
-    console.log(post);
-    console.log(post.body);
+ 
 
     let isAuthor = post.name === props.displayName;
-
-    console.log(isAuthor);
 
     return (
         <div className="readpage">
