@@ -5,12 +5,12 @@ import 'firebase/auth';
 
 // Initialize Firebase
 const config = {
-    apiKey: process.env.FIREBASE_API_KEY,
-    authDomain: process.env.FIREBASE_PROJECT_ID,
-    databaseURL: process.env.FIREBASE_DATABASE_URL,
-    projectId: process.env.FIREBASE_PROJECT_ID,
-    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+    apiKey: "AIzaSyDMEHPiQxvP1svyyXlAqD3KBu-t0_Ai2cU",
+    authDomain: "blog-app-9a306.firebaseapp.com",
+    databaseURL: "https://blog-app-9a306.firebaseio.com",
+    projectId: "blog-app-9a306",
+    storageBucket: "blog-app-9a306.appspot.com",
+    messagingSenderId: "450638869260"
 };
 firebase.initializeApp(config);
 
