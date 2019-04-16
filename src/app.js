@@ -12,7 +12,8 @@ import LoadingPage from './components/LoadingPage';
 import { startFetchPost } from './actions/post';
 
 
-
+console.log("NODE_ENV",process.env.NODE_ENV);
+console.log("API_KEY",process.env.FIREBASE_API_KEY);
 const store = configureStore();
 
 const jsx = ( // all components do have accesss to the store, with Provider setup, we can now use connect
